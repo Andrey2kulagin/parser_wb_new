@@ -1,6 +1,5 @@
 # всякие импорты
-import time
-import requests
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
@@ -179,32 +178,35 @@ login(driver)
 fin = open("m_input.txt", "r", encoding="utf-8")
 
 for input in fin:  # 31
-    data = open("data.txt", "a", encoding="utf-8")
-    fout = open("output.txt", "a", encoding="utf-8")
-    print("#31")
-    print("---------------_____----------________----------___________------_______----" + "\n" + "\n")
-    print("начало работы с ", input)
-    search(driver, input)
-    cardsCount = getCount(driver)
-    prices = getPrices(driver, input)
-    earning = getEarnings(driver)
-    print(cardsCount)
-    print(prices)
-    print(earning)
-    ki1 = k1(earning)
-    ki2 = k2(earning)
-    ki3 = k3(earning)
-    ki4 = k4(earning)
-    ki5 = k5(earning)
-    ki6 = k6(earning)
-    ki7 = k7(prices)
-    ki8 = k8(prices)
-    ki9 = k9(prices)
-    data.write(input[0:input.find("  ")] + " earnings = " + str(earning))
-    data.close()
-    outStr = input[0:input.find("  ")] + "," + str(cardsCount) + "," + str(ki1) + "," + str(ki2) + "," + str(
-        ki3) + "," + str(ki4) + "," + str(ki5) + "," + str(ki6) + "," + str(ki7) + "," + str(ki8) + "," + str(ki9)
-    fout.write(outStr + "\n")
-    fout.close()
-    print("---------------_____----------________----------___________------_______----" + "\n" + "\n")
-    print("конец работы с ", input)
+    try:
+        data = open("data.txt", "a", encoding="utf-8")
+        fout = open("output.txt", "a", encoding="utf-8")
+        print("#31")
+        print("---------------_____----------________----------___________------_______----" + "\n" + "\n")
+        print("начало работы с ", input)
+        search(driver, input)
+        cardsCount = getCount(driver)
+        prices = getPrices(driver, input)
+        earning = getEarnings(driver)
+        print(cardsCount)
+        print(prices)
+        print(earning)
+        ki1 = k1(earning)
+        ki2 = k2(earning)
+        ki3 = k3(earning)
+        ki4 = k4(earning)
+        ki5 = k5(earning)
+        ki6 = k6(earning)
+        ki7 = k7(prices)
+        ki8 = k8(prices)
+        ki9 = k9(prices)
+        data.write(input[0:input.find("  ")] + " earnings = " + str(earning))
+        data.close()
+        outStr = input[0:input.find("  ")] + "," + str(cardsCount) + "," + str(ki1) + "," + str(ki2) + "," + str(
+            ki3) + "," + str(ki4) + "," + str(ki5) + "," + str(ki6) + "," + str(ki7) + "," + str(ki8) + "," + str(ki9)
+        fout.write(outStr + "\n")
+        fout.close()
+        print("---------------_____----------________----------___________------_______----" + "\n" + "\n")
+        print("конец работы с ", input)
+    except:
+        continue
